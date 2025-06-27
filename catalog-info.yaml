@@ -9,7 +9,7 @@ spec:
   type: service
   lifecycle: production
   owner: team-a
----  
+---
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
@@ -21,4 +21,3 @@ spec:
   type: service
   lifecycle: production
   owner: team-b
-  
