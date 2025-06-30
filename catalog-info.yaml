@@ -21,3 +21,99 @@ spec:
   type: service
   lifecycle: production
   owner: team-b
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: payment-service
+  description: Handles payments and transactions
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: service
+  lifecycle: experimental
+  owner: finance-team
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: notifications-library
+  description: Shared library for notifications
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: library
+  lifecycle: deprecated
+  owner: infra-team
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: frontend-app
+  description: Customer-facing React web app
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: website
+  lifecycle: production
+  owner: frontend-team
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: analytics-pipeline
+  description: Handles real-time analytics events
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: service
+  lifecycle: production
+  owner: data-team
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: auth-gateway
+  description: Auth gateway for internal and external users
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: service
+  lifecycle: production
+  owner: security-team
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: email-service
+  description: Email delivery and bounce tracking
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: service
+  lifecycle: production
+  owner: communications-team
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: deployment-tooling
+  description: Internal CLI tools for CI/CD workflows
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: tool
+  lifecycle: experimental
+  owner: devops-team
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: support-portal
+  description: Internal portal for support agents
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: website
+  lifecycle: development
+  owner: support-team
