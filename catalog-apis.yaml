@@ -45,3 +45,25 @@ spec:
           responses:
             '200':
               description: OK
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: auth-api
+  description: Auth API for login/logout
+spec:
+  type: openapi
+  lifecycle: development
+  owner: security-team
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Auth API
+      version: 1.0.0
+    paths:
+      /login:
+        post:
+          summary: Login user
+          responses:
+            '200':
+              description: OK
