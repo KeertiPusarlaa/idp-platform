@@ -25,80 +25,44 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: payment-service
-  description: Handles payments and transactions
+  name: orders-service
+  description: Backend service handling orders
   annotations:
     backstage.io/techdocs-ref: dir:.
 spec:
   type: service
-  lifecycle: experimental
-  owner: finance-team
+  lifecycle: production
+  owner: team-a
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: notifications-library
-  description: Shared library for notifications
-  annotations:
-    backstage.io/techdocs-ref: dir:.
-spec:
-  type: library
-  lifecycle: deprecated
-  owner: infra-team
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: frontend-app
-  description: Customer-facing React web app
+  name: customer-website
+  description: Public website for customer portal
   annotations:
     backstage.io/techdocs-ref: dir:.
 spec:
   type: website
   lifecycle: production
-  owner: frontend-team
+  owner: web-team
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: analytics-pipeline
-  description: Handles real-time analytics events
+  name: shared-utils
+  description: Common utility library used across services
   annotations:
     backstage.io/techdocs-ref: dir:.
 spec:
-  type: service
-  lifecycle: production
-  owner: data-team
+  type: library
+  lifecycle: experimental
+  owner: core-lib-team
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: auth-gateway
-  description: Auth gateway for internal and external users
-  annotations:
-    backstage.io/techdocs-ref: dir:.
-spec:
-  type: service
-  lifecycle: production
-  owner: security-team
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: email-service
-  description: Email delivery and bounce tracking
-  annotations:
-    backstage.io/techdocs-ref: dir:.
-spec:
-  type: service
-  lifecycle: production
-  owner: communications-team
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: deployment-tooling
-  description: Internal CLI tools for CI/CD workflows
+  name: deploy-tool
+  description: Internal deployment CLI tool
   annotations:
     backstage.io/techdocs-ref: dir:.
 spec:
@@ -109,11 +73,71 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: support-portal
-  description: Internal portal for support agents
+  name: billing-docs
+  description: Documentation for billing service
   annotations:
     backstage.io/techdocs-ref: dir:.
 spec:
-  type: website
-  lifecycle: development
-  owner: support-team
+  type: documentation
+  lifecycle: production
+  owner: billing-team
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: orders-db
+  description: Postgres DB for orders
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: database
+  lifecycle: production
+  owner: data-team
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: cleanup-job
+  description: Nightly cleanup batch job
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: job
+  lifecycle: production
+  owner: infra-team
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: notify-function
+  description: AWS Lambda for user notifications
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: function
+  lifecycle: production
+  owner: serverless-team
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ci-cd-pipeline
+  description: GitHub Actions CI/CD workflow for backend
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: pipeline
+  lifecycle: experimental
+  owner: devops-team
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: payments-system
+  description: Logical system grouping all payment-related components
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: system
+  lifecycle: production
+  owner: payments-team
