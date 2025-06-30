@@ -1,0 +1,47 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: orders-api
+  description: API for managing customer orders
+  tags:
+    - rest
+spec:
+  type: openapi
+  lifecycle: production
+  owner: team-a
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Orders API
+      version: 1.0.0
+    paths:
+      /orders:
+        get:
+          summary: Get all orders
+          responses:
+            '200':
+              description: OK
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: items-api
+  description: API for managing inventory items
+  tags:
+    - rest
+spec:
+  type: openapi
+  lifecycle: production
+  owner: team-b
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Items API
+      version: 1.0.0
+    paths:
+      /items:
+        get:
+          summary: Get all items
+          responses:
+            '200':
+              description: OK
