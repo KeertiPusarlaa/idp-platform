@@ -2,30 +2,6 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: orders-service
-  description: Service that handles orders
-  annotations:
-    backstage.io/techdocs-ref: dir:.
-spec:
-  type: service
-  lifecycle: production
-  owner: team-a
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: items-service
-  description: Service that handles items
-  annotations:
-    backstage.io/techdocs-ref: dir:.
-spec:
-  type: service
-  lifecycle: production
-  owner: team-b
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: orders-service
   description: Backend service handling orders
   annotations:
     backstage.io/techdocs-ref: dir:.
