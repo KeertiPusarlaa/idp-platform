@@ -2,9 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
   name: orders-api
-  description: API for managing customer orders
-  tags:
-    - rest
+  description: REST API to manage orders
 spec:
   type: openapi
   lifecycle: production
@@ -26,9 +24,7 @@ apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
   name: items-api
-  description: API for managing inventory items
-  tags:
-    - rest
+  description: Handles item catalog and details
 spec:
   type: openapi
   lifecycle: production
@@ -49,12 +45,34 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  name: auth-api
-  description: Auth API for login/logout
+  name: users-api
+  description: Manages user profiles and accounts
 spec:
   type: openapi
-  lifecycle: development
-  owner: security-team
+  lifecycle: production
+  owner: team-auth
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Users API
+      version: 1.0.0
+    paths:
+      /users:
+        get:
+          summary: Get user list
+          responses:
+            '200':
+              description: OK
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: auth-api
+  description: Handles authentication tokens
+spec:
+  type: openapi
+  lifecycle: stable
+  owner: team-auth
   definition: |
     openapi: 3.0.0
     info:
@@ -66,4 +84,120 @@ spec:
           summary: Login user
           responses:
             '200':
-              description: OKAY
+              description: OK
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: billing-api
+  description: REST API for billing and invoices
+spec:
+  type: openapi
+  lifecycle: production
+  owner: finance-team
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Billing API
+      version: 1.0.0
+    paths:
+      /invoices:
+        get:
+          summary: Fetch invoices
+          responses:
+            '200':
+              description: OK
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: notifications-api
+  description: Sends in-app and email notifications
+spec:
+  type: asyncapi
+  lifecycle: experimental
+  owner: comms-team
+  definition: |
+    asyncapi: '2.0.0'
+    info:
+      title: Notifications API
+      version: '1.0.0'
+    channels:
+      user.notifications:
+        subscribe:
+          summary: Receive notifications
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: payments-api
+  description: Payment gateway integration API
+spec:
+  type: openapi
+  lifecycle: production
+  owner: payments-team
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Payments API
+      version: 1.0.0
+    paths:
+      /payments:
+        post:
+          summary: Make a payment
+          responses:
+            '201':
+              description: Created
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: graphql-profile-api
+  description: GraphQL API for user profiles
+spec:
+  type: graphql
+  lifecycle: beta
+  owner: team-ux
+  definition: |
+    type Query {
+      profile(id: ID!): UserProfile
+    }
+
+    type UserProfile {
+      id: ID!
+      name: String
+      email: String
+    }
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: grpc-recommendations-api
+  description: gRPC API for product recommendations
+spec:
+  type: grpc
+  lifecycle: experimental
+  owner: data-science-team
+  definition: proto
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: feedback-api
+  description: Public feedback collection API
+spec:
+  type: openapi
+  lifecycle: production
+  owner: support-team
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Feedback API
+      version: 1.0.0
+    paths:
+      /feedback:
+        post:
+          summary: Submit feedback
+          responses:
+            '201':
+              description: Created
