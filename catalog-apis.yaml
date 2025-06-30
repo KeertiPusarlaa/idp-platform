@@ -66,4 +66,4 @@ spec:
           summary: Login user
           responses:
             '200':
-              description: OK
+              description: OKAY
