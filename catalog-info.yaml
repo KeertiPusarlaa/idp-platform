@@ -5,6 +5,7 @@ metadata:
   description: Backend service handling orders
   annotations:
     backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: KeertiPusarlaa/idp-platform
 spec:
   type: service
   lifecycle: production
