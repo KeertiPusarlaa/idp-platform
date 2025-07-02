@@ -135,25 +135,4 @@ spec:
   lifecycle: experimental
   owner: data-science-team
   definition: proto
----
-apiVersion: backstage.io/v1alpha1
-kind: API
-metadata:
-  name: feedback-api
-  description: Public feedback collection API
-spec:
-  type: openapi
-  lifecycle: production
-  owner: support-team
-  definition: |
-    openapi: 3.0.0
-    info:
-      title: Feedback API
-      version: 1.0.0
-    paths:
-      /feedback:
-        post:
-          summary: Submit feedback
-          responses:
-            '201':
-              description: Created
+
